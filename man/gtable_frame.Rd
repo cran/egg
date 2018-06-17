@@ -20,13 +20,13 @@ gtable_frame(g, width = unit(1, "null"), height = unit(1, "null"),
 3x3 gtable wrapping the plot
 }
 \description{
-gtable_frame
+Reformat the gtable associated with a ggplot object into a 3x3 gtable where the central cell corresponds to the plot panel(s).
 }
 \examples{
 library(grid)
 library(gridExtra)
 p1 <- ggplot(mtcars, aes(mpg, wt, colour = factor(cyl))) +
-  geom_point() 
+  geom_point()
 
 p2 <- ggplot(mtcars, aes(mpg, wt, colour = factor(cyl))) +
   geom_point() + facet_wrap( ~ cyl, ncol=2, scales = "free") +

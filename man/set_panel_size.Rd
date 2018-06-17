@@ -24,10 +24,10 @@ set_panel_size(p = NULL, g = ggplot2::ggplotGrob(p), file = NULL,
 gtable with fixed panel sizes
 }
 \description{
-set_panel_size
+Set the panel width/height of a ggplot to a fixed value.
 }
 \examples{
 p1 <- qplot(mpg, wt, data=mtcars, colour=cyl)
-p2 <- p1 + facet_wrap(~carb, nrow=1) 
+p2 <- p1 + facet_wrap(~carb, nrow=1)
 grid.arrange(grobs=lapply(list(p1,p2), set_panel_size))
 }

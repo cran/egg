@@ -213,8 +213,9 @@ tabl <- "
 | [(r cookbook)][2] | `multiplot`     |   no   | no         |
 | [gtable][3]       | `rbind`, `cbind`|   yes  | yes        |
 | [cowplot][4]      | `plot_grid`     |   yes* | yes*       |
-| [egg][5]          | `ggarrange`     |   yes  | yes        |
-| wheel2            | `ground_breaking_rotating_object` | ? | ? |
+| [multipanelfigure][5]    | `multi_panel_figure`     |   yes  | yes        |
+| [egg][6]          | `ggarrange`     |   yes  | yes        |
+| [patchwork][7]    | `plot_layout`     |   yes  | yes        |
 "
 cat(tabl) 
 

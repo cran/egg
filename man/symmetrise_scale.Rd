@@ -15,10 +15,10 @@ symmetrise_scale(p, axis = "x")
 plot with scales adjusted
 }
 \description{
-symmetrise_scale
+Adds a blank layer to a ggplot to extend one axis symmetrically about 0 for all facets.
 }
 \examples{
 library(ggplot2)
-p1 <- qplot(mpg, wt, data=mtcars, colour=cyl) + facet_wrap(~carb, nrow=1, scales="free") 
+p1 <- qplot(mpg, wt, data=mtcars, colour=cyl) + facet_wrap(~carb, nrow=1, scales="free")
 symmetrise_scale(p1, "y")
 }

@@ -7,7 +7,8 @@
 ggarrange(..., plots = list(...), nrow = NULL, ncol = NULL,
   widths = NULL, heights = NULL, byrow = TRUE, top = NULL,
   bottom = NULL, left = NULL, right = NULL, padding = unit(0.5, "line"),
-  clip = "on", draw = TRUE, newpage = TRUE, debug = FALSE)
+  clip = "on", draw = TRUE, newpage = TRUE, debug = FALSE,
+  labels = NULL, label.args = list(gp = grid::gpar(font = 4, cex = 1.2)))
 }
 \arguments{
 \item{...}{ggplot objects}
@@ -41,21 +42,23 @@ ggarrange(..., plots = list(...), nrow = NULL, ncol = NULL,
 \item{newpage}{logical: draw on a new page}
 
 \item{debug}{logical, show layout with thin lines}
+
+\item{labels}{character labels used for annotation of subfigures}
+
+\item{label.args}{label list of parameters for the formatting of labels}
 }
 \value{
 gtable of aligned plots
 }
 \description{
-ggarrange
+Arrange multiple ggplot objects on a page, aligning the plot panels.
 }
 \examples{
-library(grid)
 p1 <- ggplot(mtcars, aes(mpg, wt, colour = factor(cyl))) +
-  geom_point() 
+  geom_point()
 p2 <- ggplot(mtcars, aes(mpg, wt, colour = factor(cyl))) +
   geom_point() + facet_wrap( ~ cyl, ncol=2, scales = "free") +
   guides(colour="none") +
   theme()
-grid.newpage()
-grid.draw(ggarrange(p1, p2, widths = c(2,1)))
+ggarrange(p1, p2, widths = c(2,1), labels = c("a", "b"))
 }
