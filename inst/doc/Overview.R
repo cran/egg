@@ -109,10 +109,12 @@ codes$raster <- I(gl)
 
 
 ggplot(codes, aes(x = country, y = y)) + 
-  geom_point() +
+  geom_point() + 
   geom_custom(data = codes, aes(data=raster), 
               grob_fun = rasterGrob, 
-              fun_params = list(height=unit(1,"cm")))
+              fun_params = list(height=unit(1,"cm"))) +
+  scale_y_continuous(breaks=NULL, "") +
+  theme(panel.grid = element_blank())
 
 ## ----customgrobs---------------------------------------------------------
 codes$raster <- I(lapply(codes$raster, function(x) rasterGrob(x, height=unit(1,"cm"))))
