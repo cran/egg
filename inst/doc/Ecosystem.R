@@ -126,13 +126,13 @@ grid.draw(g)
 
 ## ----egg, fig.height=3, fig.width=6--------------------------------------
 p1 <- ggplot(mtcars, aes(mpg, wt, colour = factor(cyl))) +
-  geom_point()
+  geom_point()+ theme_article() + theme(legend.position = 'top') 
 p2 <- ggplot(mtcars, aes(mpg, wt, colour = factor(cyl))) +
   geom_point() + facet_wrap(~ cyl, ncol = 2, scales = "free") +
   guides(colour = "none") +
-  theme()
+  theme_article()
   
-  ggarrange(p1, p2, widths = 1:2)
+ggarrange(p1, p2, widths = c(1.5,2))
 
 ## ----titles--------------------------------------------------------------
 grid.arrange(

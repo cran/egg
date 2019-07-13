@@ -68,14 +68,13 @@ grid.draw(combined)
 
 ## ----ggarrange-----------------------------------------------------------
 p1 <- ggplot(mtcars, aes(mpg, wt, colour = factor(cyl))) +
-  geom_point()
+  geom_point()+ theme_article() + theme(legend.position = 'top') 
 p2 <- ggplot(mtcars, aes(mpg, wt, colour = factor(cyl))) +
   geom_point() + facet_wrap(~ cyl, ncol = 2, scales = "free") +
   guides(colour = "none") +
-  theme()
-
-ggarrange(p1, p2, widths = 1:2)
-
+  theme_article()
+  
+ggarrange(p1, p2, widths = c(1.5,2))
 
 ## ----ggarrangelayout-----------------------------------------------------
 p <- ggplot()
@@ -86,6 +85,33 @@ ggarrange(p1, p2, p3, ncol=2,
           labels = c("A", "b)", "iii."), 
           label.args = list(gp=gpar(font=4), x=unit(1,"line"), hjust=0))
 
+## ----tagfacet------------------------------------------------------------
+d = data.frame(
+  x = 1:90,
+  y = rnorm(90),
+  red = rep(letters[1:3], 30),
+  blue = c(rep(1, 30), rep(2, 30), rep(3, 30)))
+
+p <- ggplot(d) +
+  geom_point(aes(x = x, y = y)) +
+  facet_grid(red ~ blue)
+  
+tag_facet(p)
+tag_facet_outside(p)
+
+## ----themes--------------------------------------------------------------
+d = data.frame(
+  x = 1:90,
+  y = rnorm(90),
+  red = rep(letters[1:3], 30),
+  blue = c(rep(1, 30), rep(2, 30), rep(3, 30)))
+
+p <- ggplot(d) +
+  geom_point(aes(x = x, y = y)) +
+  facet_grid(red ~ blue)
+
+p + theme_article()
+
 ## ----symmetrise----------------------------------------------------------
 df = data.frame(x = c(1, 2),
                 y = c(5, 0.2),
@@ -94,7 +120,7 @@ p <- ggplot(df, aes(x = x, y = y)) +
   geom_point() + 
   facet_wrap( ~ group, scale =
                 "free")
-symmetrise_scale(p, "y")
+p + scale_y_continuous(limits = symmetric_range)
 
 ## ----custompics----------------------------------------------------------
 codes <- data.frame(country = c("nz","ca","ar","fr","gb","es"))
